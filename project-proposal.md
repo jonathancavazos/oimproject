@@ -16,5 +16,6 @@ We will be working on most of the project -- and the main functionality -- durin
 We will both work on the voice-to-text functionality of the application. We will then divide the work by features. The features included may be weather updater, website opener, news updater, Wikipedia information generator, etc. The features will be evenly distributed for the team members to work on.
 
 ## Risks
+We hope to accomplish everything before the project is due. The main risk is also the application not working as intended -- or at all.
 
 ## Additional Course Content
