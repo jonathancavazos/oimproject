@@ -19,3 +19,4 @@ We will both work on the voice-to-text functionality of the application. We will
 We hope to accomplish everything before the project is due. The main risk is also the application not working as intended -- or at all.
 
 ## Additional Course Content
+Learning flask could potentially help for the web page design portion of our project. And the applications from text-mining and API's will help when trying to hunt down data. Learning how to make a program voice activated would be helpful, but we don't think it's relevant to other projects.
