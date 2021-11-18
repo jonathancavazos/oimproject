@@ -10,8 +10,10 @@ Our learning goal for this project is to make something practical and of real wo
 We don't have an exact implementation plan, but we anticipate that we will import various python modules and libraries to create the application.
 
 ## Project Schedule
+We will be working on most of the project -- and the main functionality -- during Thanksgiving break as we will have more free time to dedicate to this application. We will touch up and maybe add some cool features after the break and presentation update. 
 
 ## Collaboration Plan
+
 
 ## Risks
 
