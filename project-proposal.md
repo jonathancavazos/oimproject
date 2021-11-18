@@ -13,7 +13,7 @@ We don't have an exact implementation plan, but we anticipate that we will impor
 We will be working on most of the project -- and the main functionality -- during Thanksgiving break as we will have more free time to dedicate to this application. We will touch up and maybe add some cool features after the break and presentation update. 
 
 ## Collaboration Plan
-
+We will both work on the voice-to-text functionality of the application. We will then divide the work by features. The features included may be weather updater, website opener, news updater, Wikipedia information generator, etc. The features will be evenly distributed for the team members to work on.
 
 ## Risks
 
