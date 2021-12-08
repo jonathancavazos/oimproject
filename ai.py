@@ -49,8 +49,8 @@ def take_command():
             voice = listen.listen(mic)
             command = listen.recognize_google(voice)
             command = command.lower()
-            if 'professor' in command:
-                command = command.replace('professor', '')
+            if 'aaron' in command:
+                command = command.replace('aaron', '')
                 # talk(command)
     except:
         pass
@@ -91,6 +91,10 @@ def run_command():
         joke = pyjokes.get_joke()
         print(joke)
         talk(joke)
+    elif 'detective' in command:
+        talk('Ay, what\'s that sound? I don\'t know. I am messed up, it\'s the deon show')
+    elif 'what grade are we getting' in command:
+        talk('Jonathan and Deon, you are getting A\'s. You are awesome')
     else:
         talk('Can you repeat that?')
 
