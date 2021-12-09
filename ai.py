@@ -1,4 +1,3 @@
-# import the package and rename it as speech (simplified)
 import speech_recognition as speech
 import pyttsx3 
 import pywhatkit as run
@@ -7,99 +6,91 @@ import wikipedia
 import pyjokes
 import webbrowser
 
-'''Speech recognition functionality'''
-# Create a variable under listen that will be able to recognize and process your voice
-# Try block because mic might not work or something
-# Except --> pass because we don't want anything to happen if nothing is inputed (however, we could add a command like, "Turn on mic pls")
-# In try block, we will use the microphone function included in the package and store it as mic
-# voice will 'listen' to the words inputed through the mic
-# *****Suggestion: I could probably add the HTML here to display listening instead of terminal, but terminal is to indicate that program is running*****
-# listen.recognize_google will convert speech to text; stored under command (user's command) 
-# command.lower() to convert the "professor" we are addressing to make sure input is correct
-# if statement -- will only print command if you are addressing professor
-# then we replace 'professor' with nothing because we don't want alexa in a request like a song
 
-'''Text to speech functionality'''
-# initialize pyttsx3 under the variable engine
-# voices bock changes the voice to female; the default is male
-# engine.say() will repeat whatever is passed through as the argument -- in this case, the professor is introducing themselves and asking a question
-# run and wait will run the engine command and wait for the sound to play
-# talk() function will make the text to speech more dynamic -- repeats what you say
 
+# Set-up and initialize speech recognition
 listen = speech.Recognizer()
 engine = pyttsx3.init()
 
+
+
+# Change voice of Alfred
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
 
+
+
+# Re-usable function for Alfred to speak
 def talk(text):
+    '''Converts text to speech'''
     engine.say(text)
     engine.runAndWait()
 
-'''
-engine.say('Hello, I am your professor. What can I do for you?')
-engine.runAndWait()
-If we want to introduce them, then keep it
-'''
 
-# Takes the input from user
+
+# Takes voice input from user and processes it
 def take_command():
+    '''Takes voice command from user and processes it'''
     try:
         with speech.Microphone() as mic:
+            # Indicate in terminal that Alfred is listening
             print('Listening...')
+
+            # Takes in voice input and convert to lower-case to standardize text
             voice = listen.listen(mic)
             command = listen.recognize_google(voice)
             command = command.lower()
+
+            # Prepare command variable to repeat w/o "alfred"
             if 'alfred' in command:
                 command = command.replace('alfred', '')
-                # talk(command)
     except:
         pass
     return command
 
-'''Running command functionality'''
-# command will store the take_command() function
-# if the command has 'play', then we replace it with 'playing'
-# playonyt will be play the command through youtube
-# strftime() will conver the current time to a string
-# %I will convert time to 12 hour; %M will display minutes; %p will tell am or pm
-# Addition -- add many sorts of types of questions that will run wikipedia (who, where, what)
-# wikipedia will provide a summary of that person with 1 line (or many if specified)
-# if you ask professor to a date, they will respond nah fam
-# ask professor for a joke, they will get a joke
-# add a bunch of easter eggs and features
 
 
 # Runs the command
 def run_command():
+    '''Alfred will run any command based on the input'''
     command = take_command()
-    # print(command)
+
+    # Opens YouTube if you ask Alfred to play something
     if 'play' in command:
-        song = command.replace('play', '')
-        talk('playing' + song)
-        run.playonyt(song)
+        video = command.replace('play', '')
+        talk('playing' + video)
+        run.playonyt(video)
+
+    # Repeats time if asked
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
         talk('Current time is ' + time)
+
+    # Gives brief Wikipedia description of people you are curious about
     elif 'who is' in command:
         person = command.replace('who is', '')
         info = wikipedia.summary(person, 1)
-        print(info)
         talk(info)
+    
+    # Tells a joke if asked
     elif 'joke' in command:
         joke = pyjokes.get_joke()
-        print(joke)
         talk(joke)
+
+    # Opens Wall Street Journal if asked for current news
     elif 'news' in command:
             webbrowser.open_new_tab("https://www.wsj.com")
             talk("Here are some recent articles")
+
+    # Opens state of stock market if asked
     elif 'stock market' in command:
             webbrowser.open_new_tab("https://money.cnn.com/data/markets")
             talk("Here's the money")
+
+    # Easter Egg
     elif 'grade' in command:
         talk('You all are getting A\'s! Keep up the good work!')
+
+    # If you don't ask any of the commands above, Alfred will tell you to repeat
     else:
         talk('Can you repeat that?')
-
-
-# A lot of the prints can be displayed and should be through HTML
