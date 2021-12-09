@@ -5,6 +5,7 @@ import pywhatkit as run
 import datetime
 import wikipedia
 import pyjokes
+import webbrowser
 
 '''Speech recognition functionality'''
 # Create a variable under listen that will be able to recognize and process your voice
@@ -29,7 +30,7 @@ listen = speech.Recognizer()
 engine = pyttsx3.init()
 
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[0].id)
 
 def talk(text):
     engine.say(text)
@@ -49,8 +50,8 @@ def take_command():
             voice = listen.listen(mic)
             command = listen.recognize_google(voice)
             command = command.lower()
-            if 'aaron' in command:
-                command = command.replace('aaron', '')
+            if 'alfred' in command:
+                command = command.replace('alfred', '')
                 # talk(command)
     except:
         pass
@@ -85,21 +86,20 @@ def run_command():
         info = wikipedia.summary(person, 1)
         print(info)
         talk(info)
-    elif 'date' in command:
-        talk('Nah, fam')
     elif 'joke' in command:
         joke = pyjokes.get_joke()
         print(joke)
         talk(joke)
-    elif 'detective' in command:
-        talk('Ay, what\'s that sound? I don\'t know. I am messed up, it\'s the deon show')
-    elif 'what grade are we getting' in command:
-        talk('Jonathan and Deon, you are getting A\'s. You are awesome')
+    elif 'news' in command:
+            webbrowser.open_new_tab("https://www.wsj.com")
+            talk("Here are some recent articles")
+    elif 'stock market' in command:
+            webbrowser.open_new_tab("https://money.cnn.com/data/markets")
+            talk("Here's the money")
+    elif 'grade' in command:
+        talk('You all are getting A\'s! Keep up the good work!')
     else:
         talk('Can you repeat that?')
-
-
-run_command()
 
 
 # A lot of the prints can be displayed and should be through HTML
