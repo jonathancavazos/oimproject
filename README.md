@@ -2,9 +2,9 @@
 
 ## Required Installation
 Python 3.6.0
-The latest version compatible with required Python libraries
-Download the "Windows x86-64 executable installer" and set this version in your text editor
-https://www.python.org/downloads/release/python-360/
+- The latest version compatible with required Python libraries
+- Download the "Windows x86-64 executable installer" and set this version in your text editor
+- https://www.python.org/downloads/release/python-360/
 
 Python Speech Recognition
 Library for performing speech recognition
