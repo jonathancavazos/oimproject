@@ -91,6 +91,9 @@ def run_command():
     elif 'grade' in command:
         talk('You all are getting A\'s! Keep up the good work!')
 
+    elif 'do you like me' in command:
+        talk('no')
+
     # If you don't ask any of the commands above, Alfred will tell you to repeat
     else:
         talk('Can you repeat that?')
